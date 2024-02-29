@@ -1,5 +1,8 @@
 package com.firoztechi.UserApp.UserApp.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +23,19 @@ public class SalaryAllowanceServiceImpl implements SalaryAllowanceService{
 			throw new Exception(e.getLocalizedMessage());
 		}
 	}
+
+@Override
+public List<SalaryAllowance> getAllowanceList() throws Exception {
+	 
+	return salaryAllowanceRepository.findAll();
+}
+
+@Override
+public SalaryAllowance getAllowance(long id) throws Exception {
+	 
+	Optional<SalaryAllowance> allowance=salaryAllowanceRepository.findById(id);
+	
+	return allowance.get();
+}
 
 }
